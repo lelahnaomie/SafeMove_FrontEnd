@@ -14,6 +14,8 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   get: ^4.7.2
+  rename_app: ^1.6.5
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -26,9 +28,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/
-    - audios/
-    - logos/
+    - assets/images/
+    - assets/audios/
+    - assets/logos/
 
   # fonts:
   #   - family: Schyler
