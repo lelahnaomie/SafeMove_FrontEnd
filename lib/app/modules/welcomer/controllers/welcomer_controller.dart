@@ -1,9 +1,18 @@
 import 'package:get/get.dart';
 
 class WelcomerController extends GetxController {
-  //TODO: Implement WelcomerController
-
-  final count = 0.obs;
+  // Observable for page indicator if you want to add swipe functionality later
+  final currentPage = 0.obs;
+  
+  // Navigation methods
+  void goToLogin() {
+    Get.toNamed('/login');
+  }
+  
+  void goToRegister() {
+    Get.toNamed('/register-type');
+  }
+  
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +27,4 @@ class WelcomerController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

@@ -12,6 +12,10 @@ abstract class Routes {
   static const OTP = _Paths.OTP;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const ONBOARDING = _Paths.ONBOARDING;
+  static const REGISTER_TYPE = _Paths.REGISTER_TYPE;
+  static const APPLICATION_STATUS = _Paths.APPLICATION_STATUS;
+  static const VEHICLE_REGISTRATION = _Paths.VEHICLE_REGISTRATION;
+  static const DOCUMENT_UPLOAD = _Paths.DOCUMENT_UPLOAD;
 }
 
 abstract class _Paths {
@@ -25,4 +29,8 @@ abstract class _Paths {
   static const OTP = '/otp';
   static const RESET_PASSWORD = '/reset-password';
   static const ONBOARDING = '/onboarding';
+  static const REGISTER_TYPE = '/register-type';
+  static const APPLICATION_STATUS = '/application-status';
+  static const VEHICLE_REGISTRATION = '/vehicle-registration';
+  static const DOCUMENT_UPLOAD = '/document-upload';
 }

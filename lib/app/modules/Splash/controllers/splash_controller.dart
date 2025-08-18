@@ -1,23 +1,18 @@
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
-  //TODO: Implement SplashController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
   @override
   void onReady() {
     super.onReady();
+    // Appeler la navigation après que la vue soit prête
+    _navigateToWelcomer();
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  Future<void> _navigateToWelcomer() async {
+    // Attendre 3 secondes
+    await Future.delayed(const Duration(seconds: 3));
+    
+    // Navigation vers welcomer
+    Get.offNamed('/welcomer');
   }
-
-  void increment() => count.value++;
 }
