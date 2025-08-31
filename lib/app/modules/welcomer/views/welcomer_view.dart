@@ -4,7 +4,7 @@ import '../controllers/welcomer_controller.dart';
 
 class WelcomerView extends GetView<WelcomerController> {
   const WelcomerView({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,9 @@ class WelcomerView extends GetView<WelcomerController> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/welcome_bg.png'), // You'll need to add this image
+                image: AssetImage(
+                  'assets/images/welcome_bg.png',
+                ), // You'll need to add this image
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.4),
@@ -23,7 +25,7 @@ class WelcomerView extends GetView<WelcomerController> {
               ),
             ),
           ),
-          
+
           // Content
           SafeArea(
             child: Padding(
@@ -32,38 +34,37 @@ class WelcomerView extends GetView<WelcomerController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 60),
-                  
+
                   // Logo
                   Center(
                     child: RichText(
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: 'Safe',
+                            text: 'safe'.tr,
                             style: TextStyle(
                               fontSize: 48,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFFE91E63), // Pink color
+                              color: Color(0xFFE91E63),
                             ),
                           ),
                           TextSpan(
-                            text: 'Move',
+                            text: 'move'.tr,
                             style: TextStyle(
                               fontSize: 48,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFFE91E63), // Pink color
+                              color: Color(0xFFE91E63),
                             ),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  
+
                   const Spacer(),
-                  
-                  // Main title
+
                   Text(
-                    'Restez en sécurité\ntout au long de\nvotre trajet.',
+                    'restez_en_securite'.tr,
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
@@ -71,40 +72,39 @@ class WelcomerView extends GetView<WelcomerController> {
                       height: 1.2,
                     ),
                   ),
-                  
+
                   const SizedBox(height: 24),
-                  
-                  // Subtitle
+
                   Text(
-                    'Faites vous de l\'argent en aidant les passagers à arriver à leurs destination.',
+                    'faites_vous_de_largent'.tr,
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.white.withOpacity(0.9),
                       height: 1.4,
                     ),
                   ),
-                  
+
                   const SizedBox(height: 50),
-                  
+
                   // Create Account Button
                   SizedBox(
                     width: double.infinity,
                     height: 56,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Navigate to register type selection
+                        // Navigate to register
                         Get.toNamed('/register');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFE91E63), // Pink color
+                        backgroundColor: Color(0xFFE91E63),
                         foregroundColor: Colors.white,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: const Text(
-                        'Create an Account',
+                      child: Text(
+                        'create_an_account'.tr,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -112,16 +112,16 @@ class WelcomerView extends GetView<WelcomerController> {
                       ),
                     ),
                   ),
-                  
+
                   const SizedBox(height: 20),
-                  
+
                   // Login link
                   Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Already have an account ?  ',
+                          'already_have_account'.tr,
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.white.withOpacity(0.8),
@@ -132,7 +132,7 @@ class WelcomerView extends GetView<WelcomerController> {
                           child: Row(
                             children: [
                               Text(
-                                'Login',
+                                'login'.tr,
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.white,
@@ -151,9 +151,9 @@ class WelcomerView extends GetView<WelcomerController> {
                       ],
                     ),
                   ),
-                  
+
                   const SizedBox(height: 30),
-                  
+
                   // Page indicator dots
                   Center(
                     child: Row(
@@ -188,7 +188,7 @@ class WelcomerView extends GetView<WelcomerController> {
                       ],
                     ),
                   ),
-                  
+
                   const SizedBox(height: 20),
                 ],
               ),

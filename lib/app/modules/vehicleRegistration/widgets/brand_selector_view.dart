@@ -9,17 +9,15 @@ class BrandSelectorView extends GetView<VehicleRegistrationController> {
   Widget build(BuildContext context) {
     final searchController = TextEditingController();
     final filteredBrands = <String>[].obs;
-    
+
     // Initialize with all brands
     filteredBrands.value = controller.vehicleBrands;
-    
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.8,
       decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
         children: [
@@ -33,9 +31,9 @@ class BrandSelectorView extends GetView<VehicleRegistrationController> {
               borderRadius: BorderRadius.circular(2),
             ),
           ),
-          
+
           const SizedBox(height: 20),
-          
+
           // Search bar
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -50,15 +48,9 @@ class BrandSelectorView extends GetView<VehicleRegistrationController> {
                   filteredBrands.value = controller.getFilteredBrands(query);
                 },
                 decoration: InputDecoration(
-                  hintText: 'Rechercher votre marque de voiture',
-                  hintStyle: TextStyle(
-                    color: Colors.grey[500],
-                    fontSize: 16,
-                  ),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.grey[500],
-                  ),
+                  hintText: 'rechercher_votre_marque_de_voiture'.tr,
+                  hintStyle: TextStyle(color: Colors.grey[500], fontSize: 16),
+                  prefixIcon: Icon(Icons.search, color: Colors.grey[500]),
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -68,53 +60,52 @@ class BrandSelectorView extends GetView<VehicleRegistrationController> {
               ),
             ),
           ),
-          
+
           const SizedBox(height: 20),
-          
+
           // Brands list
           Expanded(
-            child: Obx(() => ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              itemCount: filteredBrands.length,
-              itemBuilder: (context, index) {
-                final brand = filteredBrands[index];
-                return InkWell(
-                  onTap: () => controller.selectBrand(brand),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 18,
-                    ),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey[200]!,
-                          width: 1,
-                        ),
+            child: Obx(
+              () => ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                itemCount: filteredBrands.length,
+                itemBuilder: (context, index) {
+                  final brand = filteredBrands[index];
+                  return InkWell(
+                    onTap: () => controller.selectBrand(brand),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 18,
                       ),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            brand,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xFF1A1A1A),
-                            ),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey[200]!,
+                            width: 1,
                           ),
                         ),
-                        Icon(
-                          Icons.chevron_right,
-                          color: Colors.grey[400],
-                        ),
-                      ],
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              brand,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xFF1A1A1A),
+                              ),
+                            ),
+                          ),
+                          Icon(Icons.chevron_right, color: Colors.grey[400]),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
-            )),
+                  );
+                },
+              ),
+            ),
           ),
         ],
       ),

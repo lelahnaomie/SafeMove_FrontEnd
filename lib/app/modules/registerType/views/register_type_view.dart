@@ -4,18 +4,18 @@ import '../controllers/register_type_controller.dart';
 
 class RegisterTypeView extends GetView<RegisterTypeController> {
   const RegisterTypeView({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     final PageController pageController = PageController();
-    
+
     return Scaffold(
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
-          'Driver Registration',
+        title: Text(
+          'driver_registration'.tr,
           style: TextStyle(
             color: Colors.black87,
             fontSize: 20,
@@ -56,22 +56,22 @@ class RegisterTypeView extends GetView<RegisterTypeController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  
+
                   // Step indicator
                   Text(
-                    'Step 1 of 4',
+                    'step_1_of_4'.tr,
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey[600],
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  
+
                   const SizedBox(height: 16),
-                  
+
                   // Title
-                  const Text(
-                    'Tell us your vehicule\npreference',
+                  Text(
+                    'tell_us_vehicle_preference'.tr,
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -82,9 +82,9 @@ class RegisterTypeView extends GetView<RegisterTypeController> {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 40),
-            
+
             // Cards Section
             Expanded(
               child: PageView(
@@ -96,46 +96,48 @@ class RegisterTypeView extends GetView<RegisterTypeController> {
                   // I have a car card
                   _buildVehicleCard(
                     context,
-                    title: 'I have a car',
-                    description: 'You own to planning to purchase a vehicule or vehicules i will drive myself but might also employ others to drive your vehicule.',
+                    title: 'i_have_car'.tr,
+                    description: 'have_car_description'.tr,
                     imagePath: 'assets/images/preference_register_1.png',
                     type: 'have_car',
                   ),
-                  
+
                   // I need a car card
                   _buildVehicleCard(
                     context,
-                    title: 'I need a car',
-                    description: 'I want to be employ as a driver by one of SafeMove partners and drive for them on SafeMove Company.',
+                    title: 'i_need_car'.tr,
+                    description: 'need_car_description'.tr,
                     imagePath: 'assets/images/preference_register_2.png',
                     type: 'need_car',
                   ),
                 ],
               ),
             ),
-            
+
             // Bottom Section with Indicators
             Container(
               padding: const EdgeInsets.only(bottom: 30, top: 20),
               child: Center(
-                child: Obx(() => Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    2,
-                    (index) => AnimatedContainer(
-                      duration: const Duration(milliseconds: 300),
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
-                      width: index == controller.currentPage.value ? 24 : 8,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: index == controller.currentPage.value 
-                            ? const Color(0xFF1A1A1A) 
-                            : Colors.grey[400],
-                        borderRadius: BorderRadius.circular(4),
+                child: Obx(
+                  () => Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      2,
+                      (index) => AnimatedContainer(
+                        duration: const Duration(milliseconds: 300),
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        width: index == controller.currentPage.value ? 24 : 8,
+                        height: 8,
+                        decoration: BoxDecoration(
+                          color: index == controller.currentPage.value
+                              ? const Color(0xFF1A1A1A)
+                              : Colors.grey[400],
+                          borderRadius: BorderRadius.circular(4),
+                        ),
                       ),
                     ),
                   ),
-                )),
+                ),
               ),
             ),
           ],
@@ -143,7 +145,7 @@ class RegisterTypeView extends GetView<RegisterTypeController> {
       ),
     );
   }
-  
+
   Widget _buildVehicleCard(
     BuildContext context, {
     required String title,
@@ -183,17 +185,17 @@ class RegisterTypeView extends GetView<RegisterTypeController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            type == 'have_car' 
-                                ? Icons.directions_car 
+                            type == 'have_car'
+                                ? Icons.directions_car
                                 : Icons.car_rental,
                             size: 80,
                             color: Colors.grey[400],
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            type == 'have_car' 
-                                ? 'Own Vehicle' 
-                                : 'Need Vehicle',
+                            type == 'have_car'
+                                ? 'own_vehicle'.tr
+                                : 'need_vehicle'.tr,
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.grey[600],
@@ -208,9 +210,9 @@ class RegisterTypeView extends GetView<RegisterTypeController> {
               ),
             ),
           ),
-          
+
           const SizedBox(height: 32),
-          
+
           // Content Section
           Expanded(
             child: Column(
@@ -224,9 +226,9 @@ class RegisterTypeView extends GetView<RegisterTypeController> {
                     color: Color(0xFF1A1A1A),
                   ),
                 ),
-                
+
                 const SizedBox(height: 16),
-                
+
                 // Description
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -241,9 +243,9 @@ class RegisterTypeView extends GetView<RegisterTypeController> {
                     ),
                   ),
                 ),
-                
+
                 const Spacer(),
-                
+
                 // Action Button
                 GestureDetector(
                   onTap: () => controller.selectVehicleType(type),
@@ -268,7 +270,7 @@ class RegisterTypeView extends GetView<RegisterTypeController> {
                     ),
                   ),
                 ),
-                
+
                 const SizedBox(height: 20),
               ],
             ),

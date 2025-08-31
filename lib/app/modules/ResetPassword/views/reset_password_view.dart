@@ -9,10 +9,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ResetPasswordView'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('ResetPasswordView'), centerTitle: true),
       body: const Center(
         child: Text(
           'ResetPasswordView is working',

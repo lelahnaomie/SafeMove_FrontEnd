@@ -13,8 +13,8 @@ class DocumentUploadView extends GetView<DocumentUploadController> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
-          'Driver Registration',
+        title: Text(
+          'driver_registration'.tr,
           style: TextStyle(
             color: Colors.black87,
             fontSize: 20,
@@ -47,207 +47,221 @@ class DocumentUploadView extends GetView<DocumentUploadController> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Obx(() => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-              
-              // Step indicator
-              Text(
-                'Step 3 of 4',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[600],
-                  fontWeight: FontWeight.w500,
+          child: Obx(
+            () => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 20),
+
+                // Step indicator
+                Text(
+                  'step_3_of_4'.tr,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey[600],
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              
-              const SizedBox(height: 16),
-              
-              // Dynamic title based on current step
-              Text(
-                controller.getStepTitle(),
-                style: const TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF1A1A1A),
-                  height: 1.2,
+
+                const SizedBox(height: 16),
+
+                // Dynamic title based on current step
+                Text(
+                  controller.getStepTitle(),
+                  style: const TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF1A1A1A),
+                    height: 1.2,
+                  ),
                 ),
-              ),
-              
-              const SizedBox(height: 16),
-              
-              // Progress indicator dots
-              Row(
-                children: List.generate(
-                  controller.uploadSteps.length,
-                  (index) => Container(
-                    width: 8,
-                    height: 8,
-                    margin: const EdgeInsets.only(right: 8),
-                    decoration: BoxDecoration(
-                      color: index == controller.currentStep.value
-                          ? const Color(0xFF1A237E)
-                          : controller.isStepCompleted(index)
-                              ? Colors.green
-                              : Colors.grey[300],
-                      borderRadius: BorderRadius.circular(4),
+
+                const SizedBox(height: 16),
+
+                // Progress indicator dots
+                Row(
+                  children: List.generate(
+                    controller.uploadSteps.length,
+                    (index) => Container(
+                      width: 8,
+                      height: 8,
+                      margin: const EdgeInsets.only(right: 8),
+                      decoration: BoxDecoration(
+                        color: index == controller.currentStep.value
+                            ? const Color(0xFF1A237E)
+                            : controller.isStepCompleted(index)
+                            ? Colors.green
+                            : Colors.grey[300],
+                        borderRadius: BorderRadius.circular(4),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              
-              const SizedBox(height: 32),
-              
-              // Main content area
-              Expanded(
-                child: Column(
-                  children: [
-                    // Image upload area
-                    Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(
-                            color: Colors.grey[200]!,
-                            width: 2,
-                            style: BorderStyle.solid,
-                          ),
-                        ),
-                        child: controller.getCurrentStepImage() != null
-                            ? _buildImagePreview(controller.getCurrentStepImage()!)
-                            : _buildUploadPlaceholder(),
-                      ),
-                    ),
-                    
-                    const SizedBox(height: 16),
-                    
-                    // Subtitle
-                    Text(
-                      controller.getStepSubtitle(),
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey[600],
-                        height: 1.4,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    
-                    const SizedBox(height: 32),
-                    
-                    // Action buttons
-                    if (controller.getCurrentStepImage() == null) ...[
-                      // Upload button
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: ElevatedButton.icon(
-                          onPressed: () => _showImageSourceDialog(context),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF1A237E),
-                            foregroundColor: Colors.white,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+
+                const SizedBox(height: 32),
+
+                // Main content area
+                Expanded(
+                  child: Column(
+                    children: [
+                      // Image upload area
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: Colors.grey[200]!,
+                              width: 2,
+                              style: BorderStyle.solid,
                             ),
                           ),
-                          icon: const Icon(Icons.upload),
-                          label: const Text(
-                            'Upload',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
+                          child: controller.getCurrentStepImage() != null
+                              ? _buildImagePreview(
+                                  controller.getCurrentStepImage()!,
+                                )
+                              : _buildUploadPlaceholder(),
+                        ),
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      // Subtitle
+                      Text(
+                        controller.getStepSubtitle(),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                          height: 1.4,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+
+                      const SizedBox(height: 32),
+
+                      // Action buttons
+                      if (controller.getCurrentStepImage() == null) ...[
+                        // Upload button
+                        SizedBox(
+                          width: double.infinity,
+                          height: 56,
+                          child: ElevatedButton.icon(
+                            onPressed: () => _showImageSourceDialog(context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF1A237E),
+                              foregroundColor: Colors.white,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                            icon: const Icon(Icons.upload),
+                            label: Text(
+                              'upload'.tr,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ] else ...[
-                      // Re-upload and Submit buttons
-                      Row(
-                        children: [
-                          Expanded(
-                            child: SizedBox(
-                              height: 56,
-                              child: OutlinedButton(
-                                onPressed: () => _showImageSourceDialog(context),
-                                style: OutlinedButton.styleFrom(
-                                  side: const BorderSide(
-                                    color: Color(0xFF1A237E),
-                                    width: 2,
+                      ] else ...[
+                        // Re-upload and Submit buttons
+                        Row(
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                height: 56,
+                                child: OutlinedButton(
+                                  onPressed: () =>
+                                      _showImageSourceDialog(context),
+                                  style: OutlinedButton.styleFrom(
+                                    side: const BorderSide(
+                                      color: Color(0xFF1A237E),
+                                      width: 2,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
                                   ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16),
-                                  ),
-                                ),
-                                child: const Text(
-                                  'Re-upload',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xFF1A237E),
+                                  child: Text(
+                                    're-upload'.tr,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xFF1A237E),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          
-                          const SizedBox(width: 16),
-                          
-                          Expanded(
-                            flex: 2,
-                            child: SizedBox(
-                              height: 56,
-                              child: ElevatedButton(
-                                onPressed: controller.isLoading.value
-                                    ? null
-                                    : () {
-                                        if (controller.currentStep.value == controller.uploadSteps.length - 1) {
-                                          controller.submitDocuments();
-                                        } else {
-                                          controller.nextStep();
-                                        }
-                                      },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color(0xFF1A237E),
-                                  foregroundColor: Colors.white,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16),
+
+                            const SizedBox(width: 16),
+
+                            Expanded(
+                              flex: 2,
+                              child: SizedBox(
+                                height: 56,
+                                child: ElevatedButton(
+                                  onPressed: controller.isLoading.value
+                                      ? null
+                                      : () {
+                                          if (controller.currentStep.value ==
+                                              controller.uploadSteps.length -
+                                                  1) {
+                                            controller.submitDocuments();
+                                          } else {
+                                            controller.nextStep();
+                                          }
+                                        },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFF1A237E),
+                                    foregroundColor: Colors.white,
+                                    elevation: 0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
                                   ),
+                                  child: controller.isLoading.value
+                                      ? const SizedBox(
+                                          width: 24,
+                                          height: 24,
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 2,
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                                  Colors.white,
+                                                ),
+                                          ),
+                                        )
+                                      : Text(
+                                          controller.currentStep.value ==
+                                                  controller
+                                                          .uploadSteps
+                                                          .length -
+                                                      1
+                                              ? 'submit'.tr
+                                              : 'next'.tr,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
                                 ),
-                                child: controller.isLoading.value
-                                    ? const SizedBox(
-                                        width: 24,
-                                        height: 24,
-                                        child: CircularProgressIndicator(
-                                          strokeWidth: 2,
-                                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                                        ),
-                                      )
-                                    : Text(
-                                        controller.currentStep.value == controller.uploadSteps.length - 1
-                                            ? 'Submit'
-                                            : 'Next',
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                      ],
+
+                      const SizedBox(height: 30),
                     ],
-                    
-                    const SizedBox(height: 30),
-                  ],
+                  ),
                 ),
-              ),
-            ],
-          )),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -264,15 +278,11 @@ class DocumentUploadView extends GetView<DocumentUploadController> {
             color: const Color(0xFF1A237E).withOpacity(0.1),
             borderRadius: BorderRadius.circular(40),
           ),
-          child: const Icon(
-            Icons.upload,
-            size: 40,
-            color: Color(0xFF1A237E),
-          ),
+          child: const Icon(Icons.upload, size: 40, color: Color(0xFF1A237E)),
         ),
         const SizedBox(height: 24),
-        const Text(
-          'Upload',
+        Text(
+          'upload'.tr,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -307,11 +317,7 @@ class DocumentUploadView extends GetView<DocumentUploadController> {
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: const Icon(
-                Icons.close,
-                color: Colors.white,
-                size: 20,
-              ),
+              child: const Icon(Icons.close, color: Colors.white, size: 20),
             ),
           ),
         ),
@@ -324,13 +330,13 @@ class DocumentUploadView extends GetView<DocumentUploadController> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Select Image Source'),
+          title: Text('select_image_source'.tr),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
                 leading: const Icon(Icons.camera_alt),
-                title: const Text('Camera'),
+                title: Text('Camera'.tr),
                 onTap: () {
                   Navigator.of(context).pop();
                   controller.pickImage(fromCamera: true);
@@ -338,7 +344,7 @@ class DocumentUploadView extends GetView<DocumentUploadController> {
               ),
               ListTile(
                 leading: const Icon(Icons.photo_library),
-                title: const Text('Gallery'),
+                title: Text('gallery'.tr),
                 onTap: () {
                   Navigator.of(context).pop();
                   controller.pickImage(fromCamera: false);

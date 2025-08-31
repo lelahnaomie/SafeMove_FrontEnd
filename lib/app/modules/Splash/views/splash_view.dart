@@ -8,38 +8,35 @@ class SplashView extends StatefulWidget {
   State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashViewState extends State<SplashView> with SingleTickerProviderStateMixin {
+class _SplashViewState extends State<SplashView>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
 
   @override
   void initState() {
     super.initState();
-    
+
     // Initialiser l'animation
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 1000),
       vsync: this,
     );
-    
-    _fadeAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeIn,
-    ));
-    
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
+    );
+
     // Démarrer l'animation
     _animationController.forward();
-    
+
     // Navigation après 3 secondes
     _navigateToWelcomer();
   }
 
   Future<void> _navigateToWelcomer() async {
     await Future.delayed(const Duration(seconds: 3));
-    
+
     // Vérifier que le widget est toujours monté avant de naviguer
     if (mounted) {
       Get.offNamed('/welcomer');
@@ -125,7 +122,7 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
                   ),
                 ),
               ),
-              
+
               // Loader circulaire en bas
               Container(
                 padding: const EdgeInsets.only(bottom: 100),
@@ -143,7 +140,7 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Chargement...',
+                      'loading'.tr,
                       style: TextStyle(
                         color: Colors.grey[600],
                         fontSize: 14,
@@ -153,7 +150,7 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
                   ],
                 ),
               ),
-              
+
               // Version tout en bas
               Padding(
                 padding: const EdgeInsets.only(bottom: 30),
@@ -171,10 +168,7 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
                     const SizedBox(height: 4),
                     Text(
                       'Version 1.0.0',
-                      style: TextStyle(
-                        color: Colors.grey[400],
-                        fontSize: 11,
-                      ),
+                      style: TextStyle(color: Colors.grey[400], fontSize: 11),
                     ),
                   ],
                 ),

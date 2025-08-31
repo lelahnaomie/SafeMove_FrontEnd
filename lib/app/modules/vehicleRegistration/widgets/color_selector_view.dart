@@ -8,14 +8,12 @@ class ColorSelectorView extends GetView<VehicleRegistrationController> {
   @override
   Widget build(BuildContext context) {
     final searchController = TextEditingController();
-    
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.6,
       decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
         children: [
@@ -29,9 +27,9 @@ class ColorSelectorView extends GetView<VehicleRegistrationController> {
               borderRadius: BorderRadius.circular(2),
             ),
           ),
-          
+
           const SizedBox(height: 20),
-          
+
           // Search bar
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -43,15 +41,9 @@ class ColorSelectorView extends GetView<VehicleRegistrationController> {
               child: TextField(
                 controller: searchController,
                 decoration: InputDecoration(
-                  hintText: 'Rechercher votre marque de voiture',
-                  hintStyle: TextStyle(
-                    color: Colors.grey[500],
-                    fontSize: 16,
-                  ),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.grey[500],
-                  ),
+                  hintText: 'rechercher_votre_marque_de_voiture'.tr,
+                  hintStyle: TextStyle(color: Colors.grey[500], fontSize: 16),
+                  prefixIcon: Icon(Icons.search, color: Colors.grey[500]),
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -61,9 +53,9 @@ class ColorSelectorView extends GetView<VehicleRegistrationController> {
               ),
             ),
           ),
-          
+
           const SizedBox(height: 20),
-          
+
           // Colors list
           Expanded(
             child: ListView.builder(
@@ -74,7 +66,7 @@ class ColorSelectorView extends GetView<VehicleRegistrationController> {
                 final colorName = colorData['name'] as String;
                 final color = colorData['color'] as Color;
                 final isGradient = colorData['isGradient'] == true;
-                
+
                 return InkWell(
                   onTap: () => controller.selectColor(colorName),
                   child: Container(
@@ -84,10 +76,7 @@ class ColorSelectorView extends GetView<VehicleRegistrationController> {
                     ),
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey[200]!,
-                          width: 1,
-                        ),
+                        bottom: BorderSide(color: Colors.grey[200]!, width: 1),
                       ),
                     ),
                     child: Row(
@@ -117,7 +106,7 @@ class ColorSelectorView extends GetView<VehicleRegistrationController> {
                             borderRadius: BorderRadius.circular(4),
                           ),
                         ),
-                        
+
                         Expanded(
                           child: Text(
                             colorName,
@@ -128,11 +117,8 @@ class ColorSelectorView extends GetView<VehicleRegistrationController> {
                             ),
                           ),
                         ),
-                        
-                        Icon(
-                          Icons.chevron_right,
-                          color: Colors.grey[400],
-                        ),
+
+                        Icon(Icons.chevron_right, color: Colors.grey[400]),
                       ],
                     ),
                   ),

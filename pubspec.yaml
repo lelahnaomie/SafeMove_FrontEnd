@@ -16,6 +16,7 @@ dependencies:
   get: ^4.7.2
   rename_app: ^1.6.5
   image_picker: ^1.1.2
+  get_storage: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -24,13 +25,13 @@ dev_dependencies:
   flutter_lints: ^6.0.0
 
 flutter:
-
   uses-material-design: true
+  
   assets:
-     - assets/images/
-     - assets/fonts/
-     - assets/audios/
-     - assets/lotties/
+    - assets/images/
+    - assets/fonts/
+    - assets/audios/
+    - assets/lotties/
 
   # fonts:
   #   - family: Schyler
@@ -43,4 +44,3 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  

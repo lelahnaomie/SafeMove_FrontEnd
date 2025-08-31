@@ -7,7 +7,7 @@ import '../widgets/color_selector_view.dart';
 
 class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
   const VehicleRegistrationView({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,8 +15,8 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
-          'Driver Registration',
+        title: Text(
+          'driver_registration'.tr,
           style: TextStyle(
             color: Colors.black87,
             fontSize: 20,
@@ -53,22 +53,22 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              
+
               // Step indicator
               Text(
-                'Step 2 of 4',
+                'step_2_of_4'.tr,
                 style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey[600],
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              
+
               const SizedBox(height: 16),
-              
+
               // Title
-              const Text(
-                'Add your vehicule',
+              Text(
+                'add_your_vehicle'.tr,
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -76,32 +76,30 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
                   height: 1.2,
                 ),
               ),
-              
+
               const SizedBox(height: 8),
-              
+
               // Subtitle
               Text(
-                'Your vehicule must be 2005 or be newer and at least 4 doors are not be salvaged.',
+                'vehicule_requirements'.tr,
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.grey[600],
                   height: 1.4,
                 ),
               ),
-              
+
               const SizedBox(height: 32),
-              
+
               // Marque field
-              _buildLabel('Marque'),
+              _buildLabel('marque'.tr),
               GestureDetector(
                 onTap: () => _showBrandSelector(context),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: Colors.grey[300]!,
-                    ),
+                    border: Border.all(color: Colors.grey[300]!),
                   ),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -110,40 +108,39 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Obx(() => Text(
-                          controller.selectedBrand.value.isEmpty
-                              ? 'e.g. Audi'
-                              : controller.selectedBrand.value,
-                          style: TextStyle(
-                            color: controller.selectedBrand.value.isEmpty
-                                ? Colors.grey[400]
-                                : Colors.grey[700],
-                            fontSize: 16,
+                        child: Obx(
+                          () => Text(
+                            controller.selectedBrand.value.isEmpty
+                                ? 'e.g. Audi'
+                                : controller.selectedBrand.value,
+                            style: TextStyle(
+                              color: controller.selectedBrand.value.isEmpty
+                                  ? Colors.grey[400]
+                                  : Colors.grey[700],
+                              fontSize: 16,
+                            ),
                           ),
-                        )),
+                        ),
                       ),
-                      Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Colors.grey[600],
-                      ),
+                      Icon(Icons.keyboard_arrow_down, color: Colors.grey[600]),
                     ],
                   ),
                 ),
               ),
               _buildErrorText('brand'),
-              
+
               const SizedBox(height: 24),
-              
+
               // Model field
-              _buildLabel('Model'),
+              _buildLabel('model'.tr),
               _buildTextField(
                 controller: controller.modelController,
                 hint: 'e.g. S4 Avant',
                 errorKey: 'model',
               ),
-              
+
               const SizedBox(height: 24),
-              
+
               // Year and Color row
               Row(
                 children: [
@@ -152,14 +149,12 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildLabel('Année'),
+                        _buildLabel('Année'.tr),
                         Container(
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: Colors.grey[300]!,
-                            ),
+                            border: Border.all(color: Colors.grey[300]!),
                           ),
                           child: TextField(
                             controller: controller.yearController,
@@ -186,28 +181,26 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
                             ),
                           ),
                         ),
-                        _buildErrorText('year'),
+                        _buildErrorText('year'.tr),
                       ],
                     ),
                   ),
-                  
+
                   const SizedBox(width: 16),
-                  
+
                   // Color field
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildLabel('Color'),
+                        _buildLabel('Color'.tr),
                         GestureDetector(
                           onTap: () => _showColorSelector(context),
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: Colors.grey[300]!,
-                              ),
+                              border: Border.all(color: Colors.grey[300]!),
                             ),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 16,
@@ -216,17 +209,23 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
                             child: Row(
                               children: [
                                 Expanded(
-                                  child: Obx(() => Text(
-                                    controller.selectedColor.value.isEmpty
-                                        ? 'e.g. Black'
-                                        : controller.selectedColor.value,
-                                    style: TextStyle(
-                                      color: controller.selectedColor.value.isEmpty
-                                          ? Colors.grey[400]
-                                          : Colors.grey[700],
-                                      fontSize: 16,
+                                  child: Obx(
+                                    () => Text(
+                                      controller.selectedColor.value.isEmpty
+                                          ? 'e.g. Black'
+                                          : controller.selectedColor.value,
+                                      style: TextStyle(
+                                        color:
+                                            controller
+                                                .selectedColor
+                                                .value
+                                                .isEmpty
+                                            ? Colors.grey[400]
+                                            : Colors.grey[700],
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  )),
+                                  ),
                                 ),
                                 Icon(
                                   Icons.keyboard_arrow_down,
@@ -236,61 +235,65 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
                             ),
                           ),
                         ),
-                        _buildErrorText('color'),
+                        _buildErrorText('color'.tr),
                       ],
                     ),
                   ),
                 ],
               ),
-              
+
               const SizedBox(height: 24),
-              
+
               // Licence plate field
-              _buildLabel('Licence plate number'),
+              _buildLabel('licence_plate_number'.tr),
               _buildTextField(
                 controller: controller.plateController,
                 hint: 'e.g. CE151SA',
                 textCapitalization: TextCapitalization.characters,
-                errorKey: 'plate',
+                errorKey: 'plate'.tr,
               ),
-              
+
               const SizedBox(height: 50),
-              
+
               // Continue button
               SizedBox(
                 width: double.infinity,
                 height: 56,
-                child: Obx(() => ElevatedButton(
-                  onPressed: controller.isLoading.value 
-                      ? null 
-                      : controller.continueToDocuments,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF1A237E),
-                    foregroundColor: Colors.white,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                child: Obx(
+                  () => ElevatedButton(
+                    onPressed: controller.isLoading.value
+                        ? null
+                        : controller.continueToDocuments,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF1A237E),
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                     ),
+                    child: controller.isLoading.value
+                        ? const SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
+                              ),
+                            ),
+                          )
+                        : Text(
+                            'continue'.tr,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                   ),
-                  child: controller.isLoading.value
-                      ? const SizedBox(
-                          width: 24,
-                          height: 24,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                          ),
-                        )
-                      : const Text(
-                          'Continue',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                )),
+                ),
               ),
-              
+
               const SizedBox(height: 30),
             ],
           ),
@@ -298,7 +301,7 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
       ),
     );
   }
-  
+
   Widget _buildLabel(String label) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8, left: 4),
@@ -312,7 +315,7 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
       ),
     );
   }
-  
+
   Widget _buildTextField({
     required TextEditingController controller,
     required String hint,
@@ -326,23 +329,15 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: Colors.grey[300]!,
-            ),
+            border: Border.all(color: Colors.grey[300]!),
           ),
           child: TextField(
             controller: controller,
             textCapitalization: textCapitalization,
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey[700],
-            ),
+            style: TextStyle(fontSize: 16, color: Colors.grey[700]),
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: TextStyle(
-                color: Colors.grey[400],
-                fontSize: 16,
-              ),
+              hintStyle: TextStyle(color: Colors.grey[400], fontSize: 16),
               border: InputBorder.none,
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: 16,
@@ -355,22 +350,21 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
       ],
     );
   }
-  
+
   Widget _buildErrorText(String errorKey) {
-    return Obx(() => controller.formErrors[errorKey] != null
-        ? Padding(
-            padding: const EdgeInsets.only(top: 6, left: 4),
-            child: Text(
-              controller.formErrors[errorKey]!,
-              style: const TextStyle(
-                color: Colors.red,
-                fontSize: 12,
+    return Obx(
+      () => controller.formErrors[errorKey] != null
+          ? Padding(
+              padding: const EdgeInsets.only(top: 6, left: 4),
+              child: Text(
+                controller.formErrors[errorKey]!,
+                style: const TextStyle(color: Colors.red, fontSize: 12),
               ),
-            ),
-          )
-        : const SizedBox.shrink());
+            )
+          : const SizedBox.shrink(),
+    );
   }
-  
+
   void _showBrandSelector(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -379,7 +373,7 @@ class VehicleRegistrationView extends GetView<VehicleRegistrationController> {
       builder: (context) => const BrandSelectorView(),
     );
   }
-  
+
   void _showColorSelector(BuildContext context) {
     showModalBottomSheet(
       context: context,
